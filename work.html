@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Work — Forman Production</title>
+<meta name="description" content="Selected film work from Forman Production — real estate, brand, event and music video projects shot across DFW, Texas.">
+<meta property="og:title" content="Work — Forman Production">
+<meta property="og:description" content="Selected film work from Forman Production, DFW, Texas.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --color-bg:#FFFFF0;
+  --color-text:#1A1512;
+  --color-accent:#CB0034;
+  --color-accent-600:#A8002B;
+  --color-accent-700:#830020;
+  --color-secondary:#DFC08F;
+  --color-surface:#F5EED9;
+  --color-neutral-700:#6B6259;
+  --color-neutral-800:#4A433C;
+  --color-divider:rgba(26,21,18,.4);
+  --ink:#1A1512;
+  --font-body:'Archivo',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);-webkit-font-smoothing:antialiased}
+a{color:var(--color-accent)}
+img{display:block;max-width:100%}
+::selection{background:rgba(203,0,52,.3)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* ---- BUTTONS (shared with index.html) ---- */
+.btn{position:relative;isolation:isolate;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 16px;font-family:inherit;font-weight:800;font-stretch:125%;font-size:15px;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;border:0;border-radius:0;cursor:pointer;transition:color .25s ease,transform .15s ease}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;transform:scaleX(0);transform-origin:right;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.btn:hover::before{transform-origin:left;transform:scaleX(1)}
+.btn svg{transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.btn:hover svg{transform:translateX(6px)}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--color-accent);color:var(--color-bg)}
+.btn-primary::before{background:var(--color-accent-600)}
+.btn-dark{background:var(--color-text);color:var(--color-bg)}
+.btn-dark::before{background:#332c26}
+
+/* ---- HEADER ---- */
+.site-head{position:sticky;top:0;z-index:20;background:var(--color-bg);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px;padding:20px 32px;border-bottom:2px solid var(--color-text)}
+.brand{display:flex;align-items:baseline;gap:10px;color:var(--color-text);text-decoration:none}
+.brand-name{font-weight:900;font-stretch:125%;font-size:22px;letter-spacing:-.02em;text-transform:uppercase}
+.brand-sub{font-weight:600;font-stretch:75%;font-size:13px;letter-spacing:.18em;text-transform:uppercase}
+.site-nav{display:flex;flex-wrap:wrap;align-items:center;gap:20px 28px;font-size:14px;font-weight:800;font-stretch:125%;letter-spacing:.06em;text-transform:uppercase}
+.nav-link{color:var(--color-text);text-decoration:underline;text-decoration-color:transparent;text-decoration-thickness:2px;text-underline-offset:6px;transition:color .25s,text-decoration-color .25s}
+.nav-link:hover{color:var(--color-accent);text-decoration-color:var(--color-accent)}
+.nav-link.active{color:var(--color-accent);text-decoration-color:var(--color-accent)}
+.nav-cta{position:relative;isolation:isolate;display:flex;align-items:center;gap:10px;background:var(--color-accent);color:var(--color-bg);padding:10px 14px;font-weight:800;font-stretch:125%;letter-spacing:.07em;text-decoration:none}
+.nav-cta::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--color-accent-600);transform:scaleX(0);transform-origin:right;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.nav-cta:hover::before{transform-origin:left;transform:scaleX(1)}
+
+/* ---- PAGE HEADER ---- */
+.work-hero{padding:72px 32px 48px}
+.work-hero-title{font-weight:900;font-stretch:125%;text-transform:uppercase;font-size:clamp(80px,15vw,220px);line-height:.82;letter-spacing:-.045em;overflow-wrap:break-word}
+
+/* ---- PROJECT SECTIONS (config-driven, generated at runtime) ---- */
+#projects{position:relative}
+.project{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden;color:var(--color-bg)}
+.project-media{position:absolute;inset:0;background:var(--ink)}
+.project-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.35)}
+.project-media iframe{position:absolute;top:50%;left:50%;width:max(100%,177.78svh,1210px);height:max(100%,56.25vw);transform:translate(-50%,-43%) scale(1.38);border:0;pointer-events:none}
+.project-scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,21,18,.9) 0%,rgba(26,21,18,.25) 50%,rgba(26,21,18,.4) 100%)}
+.project-text{position:relative;padding:64px 32px;max-width:min(100%,1800px);width:100%}
+.project[data-align="right"] .project-text{margin-left:auto;text-align:right}
+.project-title{font-weight:900;font-stretch:125%;text-transform:uppercase;font-size:clamp(52px,9vw,150px);line-height:.88;letter-spacing:-.035em;text-wrap:balance;overflow-wrap:break-word}
+.watch-link{margin-top:32px;display:inline-flex;align-items:center;gap:10px;background:none;border:0;border-bottom:2px solid currentColor;padding:0 0 5px;font-family:inherit;font-weight:800;font-stretch:125%;font-size:16px;letter-spacing:.08em;text-transform:uppercase;color:inherit;cursor:pointer}
+.watch-link svg{transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.watch-link:hover svg{transform:translateX(6px)}
+.watch-link:focus-visible{outline:2px solid var(--color-secondary);outline-offset:6px}
+
+/* ---- CTA ---- */
+.work-cta{background:var(--color-accent);color:var(--color-text);padding:80px 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px;align-items:end}
+.work-cta h2{font-weight:900;font-stretch:125%;text-transform:uppercase;font-size:clamp(52px,9vw,150px);line-height:.86;letter-spacing:-.035em;overflow-wrap:break-word}
+.work-cta-actions{display:flex;flex-direction:column;gap:8px;max-width:380px;width:100%;justify-self:end}
+.cta-email{display:flex;justify-content:space-between;padding:12px 0;border-bottom:2px solid var(--color-text);color:var(--color-bg);text-decoration:none;font-weight:800;font-size:17px;transition:padding .3s cubic-bezier(.2,.8,.2,1)}
+.cta-email:hover{padding-left:12px}
+
+/* ---- FOOTER ---- */
+.site-footer{background:var(--ink);color:var(--color-bg);padding:24px 32px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.site-footer .nav-link{color:var(--color-bg)}
+.site-footer .nav-link:hover{color:var(--color-secondary);text-decoration-color:var(--color-secondary)}
+
+/* ---- VIDEO MODAL ---- */
+.modal-overlay{position:fixed;inset:0;z-index:50;background:rgba(26,21,18,.94);display:none;flex-direction:column;justify-content:center;padding:32px;gap:16px}
+.modal-overlay.open{display:flex}
+.modal-head{display:flex;justify-content:space-between;align-items:center;color:var(--color-bg);max-width:1280px;width:100%;margin:0 auto;font-weight:800;font-stretch:110%;font-size:22px;text-transform:uppercase}
+.modal-close{width:48px;height:48px;background:var(--color-accent);border:0;color:var(--color-bg);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .25s}
+.modal-close:hover{background:var(--color-accent-600)}
+.modal-close:focus-visible{outline:2px solid var(--color-bg);outline-offset:3px}
+.modal-frame{max-width:1280px;width:100%;margin:0 auto;aspect-ratio:16/9;background:#000}
+.modal-frame iframe{width:100%;height:100%;border:0}
+
+@media(max-width:600px){
+  .site-head,.work-hero,.project-text,.work-cta,.site-footer{padding-left:20px;padding-right:20px}
+  .project-text{max-width:100%}
+}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <a href="/" class="brand">
+    <span class="brand-name">Forman</span>
+    <span class="brand-sub">Productions</span>
+  </a>
+  <nav class="site-nav">
+    <a href="/work" class="nav-link active">Work</a>
+    <a href="/#services" class="nav-link">Services</a>
+    <a href="/#contact" class="nav-cta">Book a shoot</a>
+  </nav>
+</header>
+
+<section class="work-hero">
+  <h1 class="work-hero-title">Work</h1>
+</section>
+
+<div id="projects"></div>
+
+<section class="work-cta">
+  <h2>Your project next.</h2>
+  <div class="work-cta-actions">
+    <a class="btn btn-dark" href="/#contact">Book a shoot<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+    <a href="mailto:office@formanproduction.com" class="cta-email">office@formanproduction.com<span>&rarr;</span></a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <span>&copy; 2026 Forman Production &middot; DFW, Texas</span>
+  <a href="/" class="nav-link">Home</a>
+</footer>
+
+<!-- VIDEO MODAL -->
+<div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-label="Video player">
+  <div class="modal-head">
+    <span id="modalTitle"></span>
+    <button class="modal-close" id="modalClose" aria-label="Close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+  </div>
+  <div class="modal-frame">
+    <iframe id="modalFrame" src="" title="" allow="autoplay; encrypted-media; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="/projects.js"></script>
+<script>
+// PROJECTS comes from /projects.js (shared with the homepage preview) —
+// add a project there and a new fullscreen section is generated automatically.
+
+function embedUrl(id){
+  return 'https://www.youtube-nocookie.com/embed/' + id +
+    '?autoplay=1&mute=1&controls=0&loop=1&playlist=' + id +
+    '&modestbranding=1&playsinline=1&rel=0&iv_load_policy=3&disablekb=1&fs=0&cc_load_policy=0';
+}
+
+function buildProjectSection(project, index){
+  var section = document.createElement('section');
+  section.className = 'project';
+  section.id = 'project-' + (index + 1);
+  section.dataset.align = index % 2 === 0 ? 'left' : 'right';
+
+  var media = document.createElement('div');
+  media.className = 'project-media';
+
+  if (project.video) {
+    var poster = document.createElement('img');
+    poster.src = 'https://img.youtube.com/vi/' + project.video + '/hqdefault.jpg';
+    poster.alt = '';
+    poster.loading = 'lazy';
+    media.appendChild(poster);
+
+    var iframe = document.createElement('iframe');
+    iframe.className = 'project-video';
+    iframe.dataset.src = embedUrl(project.video);
+    iframe.setAttribute('tabindex', '-1');
+    iframe.setAttribute('aria-hidden', 'true');
+    iframe.setAttribute('allow', 'autoplay; encrypted-media');
+    iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+    media.appendChild(iframe);
+  }
+
+  var scrim = document.createElement('div');
+  scrim.className = 'project-scrim';
+
+  var text = document.createElement('div');
+  text.className = 'project-text';
+
+  var title = document.createElement('h2');
+  title.className = 'project-title';
+  title.textContent = project.title;
+  text.appendChild(title);
+
+  if (project.video) {
+    var watch = document.createElement('button');
+    watch.type = 'button';
+    watch.className = 'watch-link';
+    watch.dataset.video = project.video;
+    watch.dataset.title = project.title;
+    watch.innerHTML = 'Watch<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>';
+    text.appendChild(watch);
+  }
+
+  section.appendChild(media);
+  section.appendChild(scrim);
+  section.appendChild(text);
+  return section;
+}
+
+var projectsContainer = document.getElementById('projects');
+PROJECTS.forEach(function(project, index){
+  projectsContainer.appendChild(buildProjectSection(project, index));
+});
+
+// ---- lazy-activate background video: only one/two sections play at a time ----
+var videoObserver = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    var iframe = entry.target.querySelector('.project-video');
+    if (!iframe) return;
+    if (entry.isIntersecting) {
+      if (!iframe.getAttribute('src')) iframe.src = iframe.dataset.src;
+    } else {
+      iframe.removeAttribute('src');
+    }
+  });
+}, {rootMargin:'40% 0px'});
+document.querySelectorAll('.project').forEach(function(sec){ videoObserver.observe(sec); });
+
+// ---- video watch modal (delegated so it works for generated buttons too) ----
+var modal=document.getElementById('modal');
+var modalTitle=document.getElementById('modalTitle');
+var modalFrame=document.getElementById('modalFrame');
+var modalClose=document.getElementById('modalClose');
+
+function openModal(id,title){
+  modalTitle.textContent=title;
+  modalFrame.title=title;
+  modalFrame.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1';
+  modal.classList.add('open');
+  modalClose.focus();
+}
+function closeModal(){
+  modal.classList.remove('open');
+  modalFrame.src='';
+}
+document.addEventListener('click', function(e){
+  var btn = e.target.closest('[data-video]');
+  if (btn) openModal(btn.dataset.video, btn.dataset.title);
+});
+modalClose.addEventListener('click',closeModal);
+modal.addEventListener('click',function(e){if(e.target===modal)closeModal()});
+addEventListener('keydown',function(e){if(e.key==='Escape')closeModal()});
+
+// ---- scroll-driven reveals ----
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !window.gsap || !window.ScrollTrigger) return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from('.work-hero-title', {opacity:0, y:40, duration:1, ease:'power3.out'});
+
+  document.querySelectorAll('.project').forEach(function(sec){
+    var text = sec.querySelector('.project-text');
+    var media = sec.querySelector('.project-media');
+    gsap.set(text.children, {opacity:0, y:36});
+    ScrollTrigger.create({
+      trigger: sec, start:'top 70%', once:true,
+      onEnter: function(){
+        gsap.to(text.children, {opacity:1, y:0, duration:.9, stagger:.12, ease:'power2.out'});
+      }
+    });
+    gsap.fromTo(media, {yPercent:-6}, {
+      yPercent:6, ease:'none',
+      scrollTrigger:{trigger:sec, start:'top bottom', end:'bottom top', scrub:true}
+    });
+  });
+})();
+</script>
+</body>
+</html>

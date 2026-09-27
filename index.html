@@ -12,370 +12,407 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --paper:#F2E7D3;        /* dominant warm cream */
-  --paper-deep:#EADCC2;   /* section contrast */
-  --ivory:#FFFFF0;        /* light accent surfaces */
-  --crimson:#CB0034;
+  --color-bg:#FFFFF0;
+  --color-text:#1A1512;
+  --color-accent:#CB0034;
+  --color-accent-600:#A8002B;
+  --color-accent-700:#830020;
+  --color-secondary:#DFC08F;
+  --color-surface:#F5EED9;
+  --color-neutral-700:#6B6259;
+  --color-neutral-800:#4A433C;
+  --color-divider:rgba(26,21,18,.4);
   --ink:#1A1512;
-  --ink-soft:#5E554A;
-  --line:rgba(26,21,18,.16);
-  --line-soft:rgba(26,21,18,.09);
+  --font-body:'Archivo',system-ui,sans-serif;
 }
 html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font-family:'Newsreader',Georgia,serif;font-weight:400;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-::selection{background:var(--crimson);color:var(--ivory)}
+body{background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);-webkit-font-smoothing:antialiased}
+a{color:var(--color-accent)}
+img{display:block;max-width:100%}
+::selection{background:rgba(203,0,52,.3)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
-/* ---- TOP BAR ---- */
-nav{position:sticky;top:0;z-index:100;background:rgba(26,21,18,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .35s}
-nav.s{border-color:rgba(255,255,240,.12)}
-.ni{max-width:1180px;margin:0 auto;padding:1.05rem 2.5rem;display:flex;align-items:center;justify-content:space-between}
-.brand{font-family:'Fraunces',serif;font-weight:500;font-size:1.06rem;letter-spacing:.005em;text-decoration:none;color:var(--ivory);display:flex;align-items:center;gap:.5rem}
-.brand .dot{width:6px;height:6px;background:var(--crimson);border-radius:50%;display:inline-block}
-.book{font-family:'Newsreader',serif;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--ivory);border:1px solid var(--crimson);padding:.42rem .95rem;transition:background .3s,color .3s}
-.book:hover{background:var(--crimson);color:var(--ivory)}
+/* ---- HERO ---- */
+.hero{position:relative;min-height:680px;height:100svh;background:var(--ink);color:var(--color-bg);overflow:hidden;display:flex;flex-direction:column}
+.hero-media{position:absolute;inset:0}
+.hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.35)}
+.hero-media iframe{position:absolute;top:50%;left:50%;width:max(100%,177.78svh,1210px);height:max(100%,56.25vw);transform:translate(-50%,-43%) scale(1.38);border:0;pointer-events:none}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,21,18,.92) 0%,rgba(26,21,18,.35) 45%,rgba(26,21,18,.55) 100%)}
 
-/* ---- HERO (copy only, narrow) ---- */
-.hero-band{background:var(--paper-deep);border-bottom:1px solid var(--line)}
-#hero{max-width:1180px;margin:0 auto;padding:4.5rem 2.5rem 4rem}
-.h-meta{font-family:'Newsreader',serif;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--crimson);margin-bottom:1.6rem}
-.h-title{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(2.9rem,5vw,4rem);line-height:.98;letter-spacing:-.018em;max-width:9em}
-.h-title em{font-style:italic;font-weight:400;color:var(--crimson)}
-.h-sub{font-family:'Newsreader',serif;font-size:1.1rem;line-height:1.7;color:var(--ink-soft);max-width:38ch;margin-top:1.7rem}
-.h-rule{width:100%;max-width:1180px;margin:0 auto;padding:0 2.5rem}
-.h-rule span{display:block;height:1px;background:var(--line)}
-.h-place{max-width:1180px;margin:0 auto;padding:1.1rem 2.5rem 1.6rem;font-family:'Newsreader',serif;font-size:.71rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft)}
+.hero-head{position:relative;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px;padding:20px 32px;border-bottom:2px solid rgba(255,255,240,.35)}
+.brand{display:flex;align-items:baseline;gap:10px;color:var(--color-bg);text-decoration:none}
+.brand-name{font-weight:900;font-stretch:125%;font-size:22px;letter-spacing:-.02em;text-transform:uppercase}
+.brand-sub{font-weight:600;font-stretch:75%;font-size:13px;letter-spacing:.18em;text-transform:uppercase}
+.hero-nav{display:flex;flex-wrap:wrap;align-items:center;gap:20px 28px;font-size:14px;font-weight:800;font-stretch:125%;letter-spacing:.06em;text-transform:uppercase}
+.nav-link{color:var(--color-bg);text-decoration:underline;text-decoration-color:transparent;text-decoration-thickness:2px;text-underline-offset:6px;transition:color .25s,text-decoration-color .25s}
+.nav-link:hover{color:var(--color-secondary);text-decoration-color:var(--color-secondary)}
+.nav-cta{position:relative;isolation:isolate;display:flex;align-items:center;gap:10px;background:var(--color-accent);color:var(--color-bg);padding:10px 14px;font-weight:800;font-stretch:125%;letter-spacing:.07em;text-decoration:none}
+.nav-cta::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--color-accent-600);transform:scaleX(0);transform-origin:right;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.nav-cta:hover::before{transform-origin:left;transform:scaleX(1)}
+
+.hero-body{position:relative;flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:0 32px 36px}
+.hero-bottom{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px}
+.hero-title{font-weight:900;font-stretch:125%;text-transform:uppercase;font-size:clamp(68px,13vw,232px);line-height:.84;letter-spacing:-.035em;color:var(--color-bg)}
+.hero-title .accent{color:var(--color-accent)}
+.hero-actions{display:flex;flex-direction:column;gap:14px}
+.hero-actions .btn{min-width:240px;font-size:16px;padding:16px 20px}
+
+/* ---- BUTTONS ---- */
+.btn{position:relative;isolation:isolate;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 16px;font-family:inherit;font-weight:800;font-stretch:125%;font-size:15px;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;border:0;border-radius:0;cursor:pointer;transition:color .25s ease,transform .15s ease}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;transform:scaleX(0);transform-origin:right;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.btn:hover::before{transform-origin:left;transform:scaleX(1)}
+.btn svg{transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.btn:hover svg{transform:translateX(6px)}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--color-accent);color:var(--color-bg)}
+.btn-primary::before{background:var(--color-accent-600)}
+.btn-outline{background:transparent;border:2px solid rgba(255,255,240,.6);color:var(--color-bg);padding:12px 14px}
+.btn-outline::before{background:var(--color-bg)}
+.btn-outline:hover{color:var(--color-text)}
+.btn-send{width:100%;background:var(--color-accent);color:var(--color-bg)}
+.btn-send::before{background:var(--color-accent-600)}
+.btn-send:active{transform:none}
+.btn-send:active::before{background:var(--color-accent-700);transform:scaleX(1)}
+.btn:disabled{opacity:.6;cursor:not-allowed}
+.btn:disabled:hover::before{transform:scaleX(0)}
 
 /* ---- SECTION SCAFFOLD ---- */
-.wrap{max-width:1180px;margin:0 auto;padding:5.5rem 2.5rem}
-.sec-head{display:flex;align-items:baseline;gap:1.1rem;margin-bottom:2.8rem;padding-bottom:1rem;border-bottom:1px solid var(--line)}
-.sec-idx{font-family:'Newsreader',serif;font-size:.71rem;letter-spacing:.2em;text-transform:uppercase;color:var(--crimson);font-variant-numeric:tabular-nums;white-space:nowrap}
-.sec-title{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(1.7rem,3.2vw,2.6rem);line-height:1;letter-spacing:-.012em}
+.section{padding:96px 32px}
+.section-head{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:24px;align-items:end;margin-bottom:48px}
+.section-title{grid-column:span 2;font-weight:900;font-stretch:125%;text-transform:uppercase;font-size:clamp(44px,7vw,120px);line-height:.88;letter-spacing:-.03em}
+.section-head-actions{display:flex;justify-content:flex-end}
+.section-dark{background:var(--color-text);color:var(--color-bg)}
+.section-dark .section-title{color:var(--color-bg)}
 
-/* ---- OFFER ---- */
-.offer-row{display:grid;grid-template-columns:2.2rem 1fr auto;gap:1.5rem;align-items:baseline;padding:1.9rem 0;border-bottom:1px solid var(--line-soft);transition:padding-left .35s}
-.offer-row:hover{padding-left:.55rem}
-.offer-row.minor{padding-top:1.5rem;padding-bottom:1.5rem}
-.offer-n{font-family:'Fraunces',serif;font-size:.95rem;color:var(--crimson);font-variant-numeric:tabular-nums}
-.offer-name{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(1.45rem,2.7vw,2rem);line-height:1.1}
-.offer-row.minor .offer-name{font-size:clamp(1.15rem,2vw,1.4rem);color:var(--ink-soft)}
-.offer-desc{font-size:.99rem;line-height:1.6;color:var(--ink-soft);margin-top:.5rem;max-width:54ch}
-.offer-row.minor .offer-desc{font-size:.9rem;margin-top:.35rem}
-.offer-price{text-align:right;white-space:nowrap}
-.offer-price .amt{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:500;display:block;color:var(--ink)}
-.offer-row.minor .offer-price .amt{font-size:1.05rem;color:var(--ink-soft)}
-.offer-price .lbl{font-family:'Newsreader',serif;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
-.offer-tbd{color:var(--crimson);font-style:italic}
+/* ---- SERVICES ---- */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:2px;background:var(--color-text);border-top:2px solid var(--color-text);border-bottom:2px solid var(--color-text)}
+.service-card{background:var(--color-bg);padding:28px 24px;min-height:400px;display:flex;flex-direction:column;gap:16px;transition:background .2s}
+.service-card:hover{background:var(--color-surface)}
+.service-card h3{font-size:26px;font-weight:800;font-stretch:110%;text-transform:uppercase;line-height:1.05}
+.service-card p{font-size:18px;font-weight:500;font-stretch:108%;line-height:1.45;letter-spacing:-.005em;color:var(--color-neutral-800);text-wrap:pretty}
+.service-price{margin-top:auto;padding-top:16px;border-top:2px solid var(--color-divider);display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.service-price .amt{font-weight:900;font-stretch:125%;font-size:30px;letter-spacing:-.02em}
+.service-price .note{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--color-neutral-700)}
 
-/* ---- TESTIMONIALS ---- */
-#quotes{background:var(--paper-deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-#quotes .inner{text-align:center}
-.q-mark{font-family:'Fraunces',serif;font-size:3.4rem;line-height:.5;color:rgba(26,21,18,.16);display:block;margin-bottom:1.4rem}
-.q-body{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(1.4rem,3.2vw,2.3rem);line-height:1.32;letter-spacing:-.01em;max-width:24ch;margin:0 auto;min-height:4.2em;display:flex;align-items:center;justify-content:center}
-.q-attr{font-family:'Newsreader',serif;font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);margin-top:1.8rem}
-.q-dots{display:flex;gap:.55rem;justify-content:center;margin-top:2.2rem}
-.q-dot{width:7px;height:7px;border-radius:50%;border:1px solid var(--crimson);background:transparent;cursor:pointer;padding:0;transition:background .3s}
-.q-dot.on{background:var(--crimson)}
-.q-note{margin-top:2.2rem;font-size:.79rem;color:var(--ink-soft);font-style:italic;opacity:.65}
+/* ---- WORK ---- */
+.work-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:48px 24px}
+.work-card{display:flex;flex-direction:column;gap:14px;padding:0;width:100%;background:transparent;border:0;color:inherit;text-align:left;cursor:pointer;font-family:inherit}
+.work-thumb{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:var(--ink)}
+.work-thumb img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.08);transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.work-card:hover .work-thumb img{transform:scale(1.06)}
+.work-play{position:absolute;left:0;bottom:0;width:64px;height:64px;background:var(--color-accent);display:flex;align-items:center;justify-content:center;pointer-events:none;transition:width .35s cubic-bezier(.2,.8,.2,1),height .35s cubic-bezier(.2,.8,.2,1)}
+.work-card:hover .work-play{width:88px;height:88px}
+.work-card--static{cursor:default}
+.work-title{padding-top:12px;border-top:2px solid rgba(255,255,240,.3);font-weight:800;font-stretch:110%;font-size:22px;text-transform:uppercase;line-height:1.1}
 
-/* ---- NEWEST WORKS ---- */
-.strip{display:grid;grid-template-columns:repeat(2,1fr);gap:1.1rem}
-.frame{position:relative;aspect-ratio:16/9;background:var(--ink);overflow:hidden;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.9rem}
-.frame.filled{cursor:pointer}
-.frame.filled:focus-visible{outline:2px solid var(--crimson);outline-offset:2px}
-.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.9;transition:opacity .45s,transform .7s}
-.frame.filled:hover img{opacity:1;transform:scale(1.04)}
-.frame-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,21,18,.6),transparent 60%)}
-.frame-play{width:50px;height:50px;border:1.4px solid rgba(255,255,240,.55);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .3s,transform .3s,border-color .3s;z-index:2;position:relative}
-.frame.filled:hover .frame-play{background:var(--crimson);border-color:var(--crimson);transform:scale(1.1)}
-.frame-tri{width:0;height:0;border:solid transparent;border-width:7px 0 7px 11px;border-left-color:rgba(255,255,240,.7);margin-left:3px}
-.frame-cap{position:absolute;left:.9rem;bottom:.8rem;z-index:2;font-family:'Newsreader',serif;font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,240,.85)}
-.frame-num{position:absolute;right:.9rem;top:.75rem;z-index:2;font-family:'Newsreader',serif;font-size:.62rem;letter-spacing:.1em;color:rgba(255,255,240,.5);font-variant-numeric:tabular-nums}
-.frame-slot{font-family:'Newsreader',serif;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,240,.4);z-index:2;position:relative}
-.works-note{margin-top:1.6rem;font-size:.79rem;color:var(--ink-soft);font-style:italic;opacity:.65}
+/* ---- CONTACT ---- */
+.contact{background:var(--color-accent);color:var(--color-text)}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:48px}
+.contact-info{display:flex;flex-direction:column;gap:32px}
+.contact-info h2{font-weight:900;font-stretch:125%;text-transform:uppercase;font-size:clamp(40px,5vw,96px);line-height:.88;letter-spacing:-.035em;overflow-wrap:anywhere;text-wrap:balance}
+.contact-links{display:flex;flex-direction:column;border-top:2px solid var(--color-text);margin-top:auto}
+.contact-link{display:flex;justify-content:space-between;padding:14px 0;border-bottom:2px solid var(--color-text);color:var(--color-bg);text-decoration:none;font-weight:800;font-size:18px;transition:padding .3s cubic-bezier(.2,.8,.2,1),color .2s}
+.contact-link:hover{padding-left:12px;color:var(--color-secondary)}
+.contact-card{background:var(--color-bg);padding:32px;display:flex;flex-direction:column;gap:20px}
+.contact-card h3{font-size:26px;font-weight:800;font-stretch:110%;text-transform:uppercase;line-height:1.05}
+.contact-card>p{font-size:18px;font-weight:500;font-stretch:108%;line-height:1.45;letter-spacing:-.005em;color:var(--color-text);text-wrap:pretty}
+.contact-form{display:flex;flex-direction:column;gap:16px}
+.field{display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:800;font-stretch:125%;letter-spacing:.06em;text-transform:uppercase}
+.field input,.field textarea{height:48px;padding:0 14px;border:2px solid var(--color-text);background:transparent;font:inherit;font-size:17px;font-weight:500;font-stretch:100%;letter-spacing:0;text-transform:none;border-radius:0;color:var(--color-text)}
+.field textarea{height:auto;padding:12px 14px;resize:vertical}
+.field input:focus-visible,.field textarea:focus-visible{outline:2px solid var(--color-text);outline-offset:2px}
+.field-note{font-size:13px;color:var(--color-neutral-700)}
+.contact-success{border-top:2px solid var(--color-text);padding-top:20px;font-weight:800;font-size:20px}
+.hp-field{position:absolute;left:-9999px}
 
-/* ---- CONTACT SHEET ---- */
-#contact{background:var(--ink);color:var(--ivory)}
-#contact .sec-head{border-color:rgba(255,255,240,.16)}
-#contact .sec-idx{color:#DFC08F}
-.cs{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
-.cs-left h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(1.9rem,3.6vw,2.9rem);line-height:1.03;letter-spacing:-.012em}
-.cs-left p{font-size:1.02rem;line-height:1.7;color:rgba(255,255,240,.6);margin-top:1.3rem;max-width:36ch}
-.cs-links{margin-top:2.2rem;display:flex;flex-direction:column;gap:.95rem}
-.cs-link{display:flex;align-items:center;gap:.8rem;color:rgba(255,255,240,.85);text-decoration:none;font-size:.99rem;transition:color .3s}
-.cs-link:hover{color:#DFC08F}
-.cs-link .cd{width:5px;height:5px;background:var(--crimson);border-radius:50%;flex-shrink:0}
-.form{display:flex;flex-direction:column;gap:1.15rem}
-.fg{display:flex;flex-direction:column;gap:.45rem}
-.fg label{font-family:'Newsreader',serif;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,240,.5)}
-.fg input,.fg textarea{background:rgba(255,255,240,.05);border:1px solid rgba(255,255,240,.15);color:var(--ivory);padding:.85rem 1rem;font-family:'Newsreader',serif;font-size:1rem;outline:none;transition:border-color .3s,background .3s;width:100%;border-radius:0;-webkit-appearance:none}
-.fg input:focus,.fg textarea:focus{border-color:var(--crimson);background:rgba(203,0,52,.07)}
-.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,240,.25)}
-.fg textarea{min-height:150px;resize:vertical}
-.f-submit{font-family:'Newsreader',serif;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ivory);background:var(--crimson);border:1px solid var(--crimson);padding:.85rem 2rem;cursor:pointer;transition:background .3s,color .3s,border-color .3s;align-self:flex-start}
-.f-submit:hover{background:transparent;color:#DFC08F;border-color:#DFC08F}
-.f-note{font-size:.78rem;color:rgba(255,255,240,.45)}
-.f-success{display:none;padding:1rem;border:1px solid rgba(203,0,52,.45);background:rgba(203,0,52,.14);font-size:.94rem;color:var(--ivory)}
-.cs-foot{max-width:1180px;margin:0 auto;padding:1.9rem 2.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;border-top:1px solid rgba(255,255,240,.12);font-family:'Newsreader',serif;font-size:.72rem;letter-spacing:.08em;color:rgba(255,255,240,.5)}
+/* ---- FOOTER ---- */
+.site-footer{background:var(--ink);color:var(--color-bg);padding:48px 32px 28px;overflow:hidden}
+.footer-word{font-weight:900;font-stretch:125%;text-transform:uppercase;font-size:19.5vw;line-height:.8;letter-spacing:-.045em;margin-left:-.04em}
+.footer-bar{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-top:32px;padding-top:16px;border-top:2px solid rgba(255,255,240,.35);font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.footer-links{display:flex;gap:24px}
 
 /* ---- VIDEO MODAL ---- */
-#vmodal{position:fixed;inset:0;background:rgba(26,21,18,.94);z-index:9000;display:none;align-items:center;justify-content:center;padding:2rem}
-#vmodal.open{display:flex}
-.vm-inner{position:relative;width:100%;max-width:980px;aspect-ratio:16/9}
-.vm-inner iframe{width:100%;height:100%;border:none}
-.vm-close{position:absolute;top:-2.6rem;right:0;background:none;border:none;color:var(--ivory);font-size:1.7rem;cursor:pointer;opacity:.75;transition:opacity .2s;line-height:1}
-.vm-close:hover{opacity:1}
+.modal-overlay{position:fixed;inset:0;z-index:50;background:rgba(26,21,18,.94);display:none;flex-direction:column;justify-content:center;padding:32px;gap:16px}
+.modal-overlay.open{display:flex}
+.modal-head{display:flex;justify-content:space-between;align-items:center;color:var(--color-bg);max-width:1280px;width:100%;margin:0 auto;font-weight:800;font-stretch:110%;font-size:22px;text-transform:uppercase}
+.modal-close{width:48px;height:48px;background:var(--color-accent);border:0;color:var(--color-bg);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .25s}
+.modal-close:hover{background:var(--color-accent-600)}
+.modal-frame{max-width:1280px;width:100%;margin:0 auto;aspect-ratio:16/9;background:#000}
+.modal-frame iframe{width:100%;height:100%;border:0}
 
-/* ---- REVEAL ---- */
-.rv{opacity:0;transform:translateY(22px);transition:opacity .8s,transform .8s}
-.rv.on{opacity:1;transform:translateY(0)}
-.rv.d1{transition-delay:.07s}.rv.d2{transition-delay:.14s}.rv.d3{transition-delay:.21s}
-@media(prefers-reduced-motion:reduce){.rv{transition:none;opacity:1;transform:none}html{scroll-behavior:auto}}
-</style>
-<noscript><style>.rv{opacity:1!important;transform:none!important}</style></noscript>
-<style>
-
-/* ---- RESPONSIVE ---- */
-@media(max-width:900px){
-  .cs{grid-template-columns:1fr;gap:2.5rem}
-  .h-inner{max-width:100%}
-}
 @media(max-width:600px){
-  .ni,.wrap,.cs-foot,.h-rule,.h-place,#hero{padding-left:1.4rem;padding-right:1.4rem}
-  .wrap{padding-top:4rem;padding-bottom:4rem}
-  .offer-row{grid-template-columns:1.6rem 1fr;gap:.9rem}
-  .offer-price{grid-column:2;text-align:left;margin-top:.7rem}
-  .offer-price .amt{display:inline;margin-right:.5rem}
-  .strip{grid-template-columns:1fr}
+  .hero-head,.hero-body,.section{padding-left:20px;padding-right:20px}
+  .section{padding-top:64px;padding-bottom:64px}
+  .hero-bottom{flex-direction:column;align-items:stretch}
+  .hero-actions .btn{min-width:0}
 }
+[hidden]{display:none!important}
 </style>
 </head>
 <body>
 
-<!-- VIDEO MODAL -->
-<div id="vmodal" role="dialog" aria-modal="true" aria-label="Video player">
-  <div class="vm-inner">
-    <button class="vm-close" id="vclose" aria-label="Close video">&#10005;</button>
-    <iframe id="vframe" src="about:blank" title="Video player" allow="autoplay;fullscreen" allowfullscreen></iframe>
-  </div>
-</div>
-
-<!-- TOP BAR -->
-<nav id="nav">
-  <div class="ni">
-    <a href="#hero" class="brand">Forman Production<span class="dot"></span></a>
-    <a href="#contact" class="book">Contact</a>
-  </div>
-</nav>
-
 <!-- HERO -->
-<div class="hero-band">
-  <section id="hero">
-    <div class="h-inner">
-      <div class="h-meta">Visual Storytelling Studio</div>
-      <h1 class="h-title">Content that<br><em>grows</em> your business.</h1>
-      <p class="h-sub">Cinematic real estate media, social content, and brand ads for businesses across North Texas.</p>
-    </div>
-  </section>
-  <div class="h-rule"><span></span></div>
-  <div class="h-place">DFW, Texas &nbsp;·&nbsp; Forman Production</div>
-</div>
-
-<!-- OFFER -->
-<div class="wrap" id="offer">
-  <div class="sec-head rv">
-    <span class="sec-idx">01 / Offer</span>
-    <h2 class="sec-title">What I produce</h2>
+<section class="hero" id="top">
+  <div class="hero-media">
+    <img src="https://img.youtube.com/vi/f5pwbnsjpWY/hqdefault.jpg" alt="">
+    <iframe src="https://www.youtube-nocookie.com/embed/f5pwbnsjpWY?autoplay=1&mute=1&controls=0&loop=1&playlist=f5pwbnsjpWY&modestbranding=1&playsinline=1&rel=0&iv_load_policy=3&disablekb=1&fs=0&cc_load_policy=0" title="" aria-hidden="true" tabindex="-1" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin"></iframe>
   </div>
+  <div class="hero-scrim"></div>
 
-  <div class="offer-row rv">
-    <span class="offer-n">01</span>
-    <div>
-      <div class="offer-name">Real Estate</div>
-      <p class="offer-desc">Cinematic walkthroughs, drone aerials, and listing photography that move properties faster.</p>
-    </div>
-    <div class="offer-price"><span class="amt">$200</span><span class="lbl">Starting</span></div>
-  </div>
+  <header class="hero-head">
+    <a href="/" class="brand">
+      <span class="brand-name">Forman</span>
+      <span class="brand-sub">Productions</span>
+    </a>
+    <nav class="hero-nav">
+      <a href="/work" class="nav-link">Work</a>
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#contact" class="nav-cta">Book a shoot</a>
+    </nav>
+  </header>
 
-  <div class="offer-row rv d1">
-    <span class="offer-n">02</span>
-    <div>
-      <div class="offer-name">Social Media Content</div>
-      <p class="offer-desc">Short-form content built to post — reels, hooks, and a steady feed that keeps your business visible.</p>
-    </div>
-    <div class="offer-price"><span class="amt offer-tbd">TBD</span><span class="lbl">Per project</span></div>
-  </div>
-
-  <div class="offer-row rv d2">
-    <span class="offer-n">03</span>
-    <div>
-      <div class="offer-name">Brand &amp; Facebook Ads</div>
-      <p class="offer-desc">Ad creative made to convert — scripted, shot, and cut for paid placement, not just for the feed.</p>
-    </div>
-    <div class="offer-price"><span class="amt offer-tbd">TBD</span><span class="lbl">Per project</span></div>
-  </div>
-
-  <div class="offer-row minor rv d3">
-    <span class="offer-n">04</span>
-    <div>
-      <div class="offer-name">Weddings</div>
-      <p class="offer-desc">Select wedding films, booked on a limited basis.</p>
-    </div>
-    <div class="offer-price"><span class="amt">$700</span><span class="lbl">Starting</span></div>
-  </div>
-</div>
-
-<!-- TESTIMONIALS -->
-<div id="quotes">
-  <div class="wrap inner">
-    <div class="sec-head rv" style="justify-content:center;border:none;margin-bottom:1.2rem">
-      <span class="sec-idx">02 / Testimonials</span>
-    </div>
-    <div class="rv">
-      <span class="q-mark">&ldquo;</span>
-      <blockquote class="q-body" id="qBody"></blockquote>
-      <div class="q-attr" id="qAttr"></div>
-      <div class="q-dots" id="qDots"></div>
-    </div>
-  </div>
-</div>
-
-<!-- NEWEST WORKS -->
-<div class="wrap" id="work">
-  <div class="sec-head rv">
-    <span class="sec-idx">03 / Work</span>
-    <h2 class="sec-title">Newest Works</h2>
-  </div>
-  <div class="strip">
-    <div class="frame filled rv" data-slot="1" data-video="f5pwbnsjpWY" tabindex="0" role="button" aria-label="Play video: Drift &amp; Drag Highlight">
-      <img src="https://img.youtube.com/vi/f5pwbnsjpWY/hqdefault.jpg" alt="Drift &amp; Drag Highlight video thumbnail" loading="lazy">
-      <div class="frame-grad"></div>
-      <div class="frame-cap">Drift &amp; Drag Highlight</div>
-      <div class="frame-num">01</div>
-      <div class="frame-play"><span class="frame-tri"></span></div>
-    </div>
-    <div class="frame filled rv d1" data-slot="2" data-video="8siZxYPs6NA" tabindex="0" role="button" aria-label="Play video: Prosper PD Recruitment">
-      <img src="https://img.youtube.com/vi/8siZxYPs6NA/hqdefault.jpg" alt="Prosper PD Recruitment video thumbnail" loading="lazy">
-      <div class="frame-grad"></div>
-      <div class="frame-cap">Prosper PD Recruitment</div>
-      <div class="frame-num">02</div>
-      <div class="frame-play"><span class="frame-tri"></span></div>
-    </div>
-    <div class="frame filled rv d2" data-slot="3" data-video="QRiViVU8gag" tabindex="0" role="button" aria-label="Play video: Donium House Set">
-      <img src="https://img.youtube.com/vi/QRiViVU8gag/hqdefault.jpg" alt="Donium House Set video thumbnail" loading="lazy">
-      <div class="frame-grad"></div>
-      <div class="frame-cap">Donium House Set</div>
-      <div class="frame-num">03</div>
-      <div class="frame-play"><span class="frame-tri"></span></div>
-    </div>
-    <div class="frame filled rv d3" data-slot="4" data-video="cPTNzG0i8ts" tabindex="0" role="button" aria-label="Play video: Realtor Walkthrough">
-      <img src="https://img.youtube.com/vi/cPTNzG0i8ts/hqdefault.jpg" alt="Realtor Walkthrough video thumbnail" loading="lazy">
-      <div class="frame-grad"></div>
-      <div class="frame-cap">Realtor Walkthrough</div>
-      <div class="frame-num">04</div>
-      <div class="frame-play"><span class="frame-tri"></span></div>
-    </div>
-  </div>
-</div>
-
-<!-- CONTACT SHEET -->
-<div id="contact">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <span class="sec-idx">04 / Contact</span>
-      <h2 class="sec-title" style="color:var(--ivory)">Let's talk</h2>
-    </div>
-    <div class="cs">
-      <div class="cs-left rv">
-        <h2>Tell me about<br>your project.</h2>
-        <p>Realtor, business owner, or brand — if you've got something worth filming, I want to hear about it.</p>
-        <div class="cs-links">
-          <a href="mailto:office@formanproduction.com" class="cs-link"><span class="cd"></span>office@formanproduction.com</a>
-          <a href="https://www.instagram.com/forman.productions" target="_blank" rel="noopener noreferrer" class="cs-link"><span class="cd"></span>@forman.productions</a>
-          <a href="https://www.facebook.com/share/1Jphc3PGCn/" target="_blank" rel="noopener noreferrer" class="cs-link"><span class="cd"></span>Forman Production on Facebook</a>
-        </div>
+  <div class="hero-body">
+    <div class="hero-bottom">
+      <h1 class="hero-title">Shot to<br><span class="accent">sell.</span></h1>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#work">See the work<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+        <a class="btn btn-outline" href="#contact">Book a shoot<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
       </div>
-      <form class="form rv d1" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contactForm">
-        <input type="hidden" name="form-name" value="contact">
-        <p style="display:none"><label>Don't fill this out: <input name="bot-field"></label></p>
-        <div class="f-success" id="formSuccess">&#10003; Message sent — I'll be in touch within 24 hours.</div>
-        <div class="fg">
-          <label for="c-email">Email</label>
-          <input type="email" id="c-email" name="email" placeholder="you@email.com" required>
-        </div>
-        <div class="fg">
-          <label for="c-message">Message</label>
-          <textarea id="c-message" name="message" placeholder="What are you looking to make?" required></textarea>
-        </div>
-        <button type="submit" class="f-submit">Send Message</button>
-        <span class="f-note">I typically respond within 24 hours. By submitting, you agree to be contacted about your inquiry.</span>
-      </form>
     </div>
   </div>
-  <div class="cs-foot">
-    <span>© 2026 Forman Production</span>
-    <span>DFW, Texas</span>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section">
+  <div class="section-head">
+    <h2 class="section-title">What I do</h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <h3>Real Estate</h3>
+      <p>Cinematic walkthroughs, drone aerials and listing photos that help properties sell faster.</p>
+      <div class="service-price"><span class="amt">$200</span><span class="note">Starting</span></div>
+    </div>
+    <div class="service-card">
+      <h3>Social Media Content</h3>
+      <p>Short-form reels with hooks that land, delivered ready to post so your feed never goes quiet.</p>
+      <div class="service-price"><span class="amt">Quote</span><span class="note">Per project</span></div>
+    </div>
+    <div class="service-card">
+      <h3>Brand &amp; Facebook Ads</h3>
+      <p>Ad creative scripted, shot and cut for paid placement. Built to convert, not just to fill a feed.</p>
+      <div class="service-price"><span class="amt">Quote</span><span class="note">Per project</span></div>
+    </div>
+    <div class="service-card">
+      <h3>Weddings</h3>
+      <p>Select wedding films, booked on a limited basis each season.</p>
+      <div class="service-price"><span class="amt">$700</span><span class="note">Starting</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work" class="section section-dark">
+  <div class="section-head">
+    <h2 class="section-title">Newest work</h2>
+    <div class="section-head-actions">
+      <a class="btn btn-outline" href="/work" style="min-width:220px">All work<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+    </div>
+  </div>
+  <div class="work-grid" id="workGrid"></div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section contact">
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h2>Got something worth filming?</h2>
+      <div class="contact-links">
+        <a href="mailto:office@formanproduction.com" class="contact-link">office@formanproduction.com<span>&rarr;</span></a>
+        <a href="https://www.instagram.com/forman.productions" target="_blank" rel="noopener noreferrer" class="contact-link">Instagram<span>&rarr;</span></a>
+        <a href="https://www.facebook.com/share/1Jphc3PGCn/" target="_blank" rel="noopener noreferrer" class="contact-link">Facebook<span>&rarr;</span></a>
+      </div>
+    </div>
+    <div class="contact-card">
+      <h3>Tell me about your project.</h3>
+      <p>Realtor, business owner or brand: send the details and I'll reply within 24 hours.</p>
+
+      <form class="contact-form" id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact">
+        <p class="hp-field"><label>Don't fill this out: <input name="bot-field"></label></p>
+        <label class="field">Email
+          <input type="email" name="email" placeholder="you@company.com" required>
+        </label>
+        <label class="field">Message
+          <textarea name="message" rows="5" placeholder="What are we filming, where, and when?" required></textarea>
+        </label>
+        <button type="submit" class="btn btn-send">Send message<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></button>
+        <p class="field-note">By submitting, you agree to be contacted about your inquiry.</p>
+      </form>
+      <div class="contact-success" id="formSuccess" hidden>Message sent. I'll be in touch within 24 hours.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-word">Forman</div>
+  <div class="footer-bar">
+    <span>&copy; 2026 Forman Production &middot; DFW, Texas</span>
+    <div class="footer-links">
+      <a href="/work" class="nav-link">Work</a>
+    </div>
+  </div>
+</footer>
+
+<!-- VIDEO MODAL -->
+<div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-label="Video player">
+  <div class="modal-head">
+    <span id="modalTitle"></span>
+    <button class="modal-close" id="modalClose" aria-label="Close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+  </div>
+  <div class="modal-frame">
+    <iframe id="modalFrame" src="" title="" allow="autoplay; encrypted-media; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
   </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="/projects.js"></script>
+<script>
+// PROJECTS comes from /projects.js (shared with /work) — this preview
+// shows the newest few; "All work" links to the full list.
+var PREVIEW_COUNT = 3;
+var workGrid = document.getElementById('workGrid');
+PROJECTS.slice(0, PREVIEW_COUNT).forEach(function(project){
+  var card;
+  if (project.video) {
+    card = document.createElement('button');
+    card.type = 'button';
+    card.className = 'work-card';
+    card.dataset.video = project.video;
+    card.dataset.title = project.title;
+  } else {
+    card = document.createElement('div');
+    card.className = 'work-card work-card--static';
+  }
+
+  var thumb = document.createElement('div');
+  thumb.className = 'work-thumb';
+
+  if (project.video) {
+    var img = document.createElement('img');
+    img.src = 'https://img.youtube.com/vi/' + project.video + '/hqdefault.jpg';
+    img.alt = project.title;
+    img.loading = 'lazy';
+    thumb.appendChild(img);
+
+    var play = document.createElement('div');
+    play.className = 'work-play';
+    play.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="#FFFFF0"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>';
+    thumb.appendChild(play);
+  }
+
+  var titleEl = document.createElement('span');
+  titleEl.className = 'work-title';
+  titleEl.textContent = project.title;
+
+  card.appendChild(thumb);
+  card.appendChild(titleEl);
+  workGrid.appendChild(card);
+});
+
+var modal=document.getElementById('modal');
+var modalTitle=document.getElementById('modalTitle');
+var modalFrame=document.getElementById('modalFrame');
+var modalClose=document.getElementById('modalClose');
+
+function openModal(id,title){
+  modalTitle.textContent=title;
+  modalFrame.title=title;
+  modalFrame.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1';
+  modal.classList.add('open');
+  modalClose.focus();
+}
+function closeModal(){
+  modal.classList.remove('open');
+  modalFrame.src='';
+}
+document.querySelectorAll('[data-video]').forEach(function(btn){
+  btn.addEventListener('click',function(){openModal(btn.dataset.video,btn.dataset.title)});
+});
+modalClose.addEventListener('click',closeModal);
+modal.addEventListener('click',function(e){if(e.target===modal)closeModal()});
+addEventListener('keydown',function(e){if(e.key==='Escape')closeModal()});
+
+var form=document.getElementById('contactForm');
+var success=document.getElementById('formSuccess');
+form.addEventListener('submit',function(e){
+  e.preventDefault();
+  var btn=form.querySelector('.btn-send');
+  btn.disabled=true;
+  btn.firstChild.textContent='Sending…';
+  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString()})
+    .then(function(){ form.hidden=true; success.hidden=false; })
+    .catch(function(){ btn.disabled=false; btn.firstChild.textContent='Try again'; });
+});
+</script>
 
 <script>
-// nav border on scroll
-const nav=document.getElementById('nav');
-addEventListener('scroll',()=>nav.classList.toggle('s',scrollY>40));
+(function(){
+  if(!window.gsap || !window.ScrollTrigger) return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  gsap.registerPlugin(ScrollTrigger);
 
-// reveal on scroll
-const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')}),{threshold:.12});
-document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+  function reveal(el, from, to, triggerEl){
+    if(!el) return;
+    gsap.set(el, from);
+    gsap.to(el, Object.assign({}, to, {
+      scrollTrigger:{ trigger: triggerEl || el, start:'top 85%' }
+    }));
+    el.addEventListener('focusin', function(){
+      gsap.to(el, Object.assign({}, to, {duration:0}));
+    });
+  }
 
-// video modal
-const modal=document.getElementById('vmodal'),vframe=document.getElementById('vframe'),vclose=document.getElementById('vclose');
-function openVid(id){if(!id)return;vframe.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0';modal.classList.add('open');vclose.focus()}
-function closeVid(){modal.classList.remove('open');vframe.src='about:blank'}
-document.querySelectorAll('[data-video]').forEach(el=>{
-  el.addEventListener('click',()=>openVid(el.dataset.video));
-  el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openVid(el.dataset.video)}});
-});
-vclose.addEventListener('click',closeVid);
-modal.addEventListener('click',e=>{if(e.target===modal)closeVid()});
-addEventListener('keydown',e=>{if(e.key==='Escape')closeVid()});
+  reveal(document.querySelector('#services .section-head'),
+    {opacity:0,y:24}, {opacity:1,y:0,duration:.7,ease:'power2.out'});
+  gsap.utils.toArray('#services .service-card').forEach(function(card,i){
+    reveal(card, {opacity:0,y:32}, {opacity:1,y:0,duration:.6,ease:'power2.out',delay:i*.08});
+  });
 
-/* ---------------------------------------------------------
-   NEWEST WORKS — to fill a slot:
-   1. Find the .frame with the matching data-slot number below
-   2. Add  data-video="YOUTUBE_ID"  and  class="frame filled"
-   3. Add inside it:
-      <img src="https://img.youtube.com/vi/YOUTUBE_ID/hqdefault.jpg" alt="" loading="lazy">
-      <div class="frame-grad"></div>
-      <div class="frame-cap">Your Caption</div>
-   4. Delete that frame's <div class="frame-slot">Clip 0X</div>
-   --------------------------------------------------------- */
+  reveal(document.querySelector('#work .section-head'),
+    {opacity:0,y:24}, {opacity:1,y:0,duration:.7,ease:'power2.out'});
+  gsap.utils.toArray('#work .work-card').forEach(function(card,i){
+    reveal(card, {opacity:0,y:32}, {opacity:1,y:0,duration:.6,ease:'power2.out',delay:i*.08});
+  });
 
-// TESTIMONIALS
-const QUOTES=[
-  {t:"The video was amazing, and we loved it! You captured the magic of the day, and it will forever live in our hearts. Now video. We can't thank you enough!!!",a:'Devin Patel, Wedding'},
-  {t:"Forman Production is the best to ever do it. Super professional and cooperative. Very flexible with changes and ideas. Would recommend.",a:'Don Guya, Artist / Producer'},
-  {t:"Riley has been such a great asset to my real estate business! He's helped me with social media, reels, and marketing, and always does an amazing job. He's reliable, creative, friendly, professional, and makes the whole process easy and enjoyable. I truly enjoy working with Riley and highly recommend him!",a:'Sarah Bigley, Real Estate Agent'}
-];
-const qBody=document.getElementById('qBody'),qAttr=document.getElementById('qAttr'),qDots=document.getElementById('qDots');
-let qi=0;
-QUOTES.forEach((_,i)=>{const b=document.createElement('button');b.className='q-dot'+(i===0?' on':'');b.setAttribute('aria-label','Testimonial '+(i+1));b.addEventListener('click',()=>{qi=i;render()});qDots.appendChild(b)});
-function render(){qBody.textContent=QUOTES[qi].t;qAttr.textContent='— '+QUOTES[qi].a;[...qDots.children].forEach((d,i)=>d.classList.toggle('on',i===qi))}
-render();
-setInterval(()=>{qi=(qi+1)%QUOTES.length;render()},6000);
+  reveal(document.querySelector('.contact-info'),
+    {opacity:0,y:28}, {opacity:1,y:0,duration:.7,ease:'power2.out'});
+  reveal(document.querySelector('.contact-card'),
+    {opacity:0,y:28}, {opacity:1,y:0,duration:.7,ease:'power2.out',delay:.1});
 
-// contact form — Netlify AJAX
-const cForm=document.getElementById('contactForm'),cSuccess=document.getElementById('formSuccess');
-cForm.addEventListener('submit',async e=>{
-  e.preventDefault();
-  const btn=cForm.querySelector('.f-submit');btn.textContent='Sending…';btn.disabled=true;
-  try{
-    await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(cForm)).toString()});
-    cForm.reset();cSuccess.style.display='block';btn.textContent='Send Message';btn.disabled=false;
-  }catch(err){btn.textContent='Try Again';btn.disabled=false;}
-});
+  var footerWord=document.querySelector('.footer-word');
+  if(footerWord){
+    gsap.set(footerWord,{opacity:0,scale:.92,transformOrigin:'left center'});
+    gsap.to(footerWord,{opacity:1,scale:1,duration:.9,ease:'power3.out',
+      scrollTrigger:{trigger:footerWord,start:'top 90%'}
+    });
+  }
+
+  var heroMedia=document.querySelector('.hero-media');
+  var heroSection=document.querySelector('.hero');
+  if(heroMedia && heroSection){
+    gsap.to(heroMedia,{
+      yPercent:-8, ease:'none',
+      scrollTrigger:{ trigger:heroSection, start:'top top', end:'bottom top', scrub:true }
+    });
+  }
+})();
 </script>
 </body>
 </html>
